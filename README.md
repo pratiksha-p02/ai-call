@@ -2,7 +2,7 @@
 
 AI Call Copilot is a full stack application that simulates a real time AI assistant for customer support calls. It listens to user speech, transcribes it, analyzes intent and sentiment, and suggests the next best response to assist human agents during conversations.
 
-This project is inspired by AI copilot systems like Observe.ai and focuses on real time agent assistance rather than replacing human agents.
+This project focuses on real time agent assistance rather than replacing human agents.
 
 ---
 
