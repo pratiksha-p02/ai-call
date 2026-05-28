@@ -1,6 +1,7 @@
 import React, { useMemo, useRef, useState } from "react";
-
-const API_BASE = "";
+console.log("APP LOADED");
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+const buildApiUrl = (path) => `${API_BASE ? API_BASE.replace(/\/$/, "") : ""}${path}`;
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -47,12 +48,12 @@ function App() {
           const formData = new FormData();
           formData.append("file", blob, "audio.webm");
           formData.append("context", conversationText);
-          formData.append("whisper_model", "base");
+          formData.append("whisper_model", "tiny");
 
-          const response = await fetch("/api/process-turn", {
-  method: "POST",
-  body: formData
-});
+          const response = await fetch(buildApiUrl("/api/process-turn"), {
+            method: "POST",
+            body: formData
+          });
 
           const data = await response.json();
 
@@ -113,15 +114,15 @@ function App() {
     setError("");
     try {
       setStatus("Generating summary");
-      const response = await fetch("/api/summary", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    conversation_text: conversationText
-  })
-});
+      const response = await fetch(buildApiUrl("/api/summary"), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          conversation_text: conversationText
+        })
+      });
 
       const data = await response.json();
 

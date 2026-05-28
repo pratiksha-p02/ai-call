@@ -79,6 +79,8 @@ Open the app in your browser at:
 
 ---
 
+The frontend is configured to proxy `/api` requests to the local backend at `http://127.0.0.1:5000` using Vite. If you prefer to bypass the proxy, set `VITE_API_BASE_URL=http://127.0.0.1:5000` in a `.env` file in `frontend/`.
+
 ## Usage
 
 1. Start both backend and frontend
